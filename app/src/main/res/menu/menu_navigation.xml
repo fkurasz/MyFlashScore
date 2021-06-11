@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/mecze"
+        android:title="Mecze"
+        android:icon="@drawable/ic_mecze"/>
+    <item
+        android:id="@+id/ulubione"
+        android:title="Ulubione"
+        android:icon="@drawable/ic_ulubione"/>
+    <item
+        android:id="@+id/tabele"
+        android:title="Tabele"
+        android:icon="@drawable/ic_tabele"/>
+</menu>
