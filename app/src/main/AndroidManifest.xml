@@ -9,9 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Clickable_temp">
-        <activity android:name="com.example.MyFlashScore.TabeleWyborActivity"></activity>
-        <activity android:name="com.example.MyFlashScore.TabeleActivity" />
-        <activity android:name="com.example.MyFlashScore.MainActivity">
+        <activity android:name=".UlubioneActivity" />
+        <activity android:name=".TabeleWyborActivity" />
+        <activity android:name=".TabeleActivity" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

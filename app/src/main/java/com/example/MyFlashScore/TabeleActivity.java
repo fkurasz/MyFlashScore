@@ -45,6 +45,7 @@ public class TabeleActivity extends AppCompatActivity {
             }
         });
 
+        // bottom nav
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setSelectedItemId(R.id.tabele);
 
@@ -53,8 +54,12 @@ public class TabeleActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.mecze:
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.ulubione:
+                        startActivity(new Intent(getApplicationContext(), UlubioneActivity.class));
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.tabele:
                         startActivity(new Intent(getApplicationContext(), TabeleActivity.class));
@@ -64,6 +69,7 @@ public class TabeleActivity extends AppCompatActivity {
                 return false;
             }
         });
+        //end bottom nav
 
     }
     private class CustomAdapter extends BaseAdapter{

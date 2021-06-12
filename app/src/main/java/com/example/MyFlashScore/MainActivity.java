@@ -22,25 +22,29 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // obsluga przycisku
-        button = (Button)findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openTabeleActivity();
-            }
-        });
+        //button = (Button)findViewById(R.id.button);
+        //button.setOnClickListener(new View.OnClickListener() {
+        //    @Override
+        //    public void onClick(View v) {
+        //        openTabeleActivity();
+        //    }
+        //});
 
         // bottom nav
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.tabele);
+        bottomNavigationView.setSelectedItemId(R.id.mecze);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.mecze:
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.ulubione:
+                        startActivity(new Intent(getApplicationContext(), UlubioneActivity.class));
+                        overridePendingTransition(0, 0);
                         return true;
                     case R.id.tabele:
                         startActivity(new Intent(getApplicationContext(), TabeleActivity.class));
@@ -53,10 +57,10 @@ public class MainActivity extends AppCompatActivity {
         //end bottom nav
 
     }
-    public void openTabeleActivity(){
-        Intent intent = new Intent(this,TabeleActivity.class);
-        startActivity(intent);
-    }
+    //public void openTabeleActivity(){
+    //    Intent intent = new Intent(this,TabeleActivity.class);
+    //    startActivity(intent);
+    //}
 
 
 }

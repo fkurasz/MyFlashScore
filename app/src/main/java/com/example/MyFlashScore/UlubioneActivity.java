@@ -6,31 +6,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import com.example.MyFlashScore.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class TabeleWyborActivity extends AppCompatActivity {
-    TextView name;
-    ImageView image;
+public class UlubioneActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tabele_wybor);
-
-        name = findViewById(R.id.listdata);
-        image = findViewById(R.id.imageView);
-
-        Intent intent = getIntent();
-        name.setText(intent.getStringExtra("name"));
-        image.setImageResource(intent.getIntExtra("image",0));
+        setContentView(R.layout.activity_ulubione);
 
 
         // bottom nav
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.tabele);
+        bottomNavigationView.setSelectedItemId(R.id.ulubione);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
