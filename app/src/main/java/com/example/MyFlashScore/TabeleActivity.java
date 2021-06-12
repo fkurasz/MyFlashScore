@@ -40,6 +40,7 @@ public class TabeleActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(getApplicationContext(),TabeleWyborActivity.class);
                 intent.putExtra("name",kraje[position]);
+                intent.putExtra("liga",ligi[position]);
                 intent.putExtra("image",krajeFlagi[position]);
                 startActivity(intent);
             }

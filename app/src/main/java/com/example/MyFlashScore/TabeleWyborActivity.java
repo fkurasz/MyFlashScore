@@ -14,17 +14,20 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class TabeleWyborActivity extends AppCompatActivity {
     TextView name;
+    TextView liga;
     ImageView image;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabele_wybor);
 
-        name = findViewById(R.id.listdata);
-        image = findViewById(R.id.imageView);
+        name = findViewById(R.id.listKraj);
+        liga = findViewById(R.id.listLiga);
+        image = findViewById(R.id.listImage);
 
         Intent intent = getIntent();
         name.setText(intent.getStringExtra("name"));
+        liga.setText(intent.getStringExtra("liga"));
         image.setImageResource(intent.getIntExtra("image",0));
 
 
