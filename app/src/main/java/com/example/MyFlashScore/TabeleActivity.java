@@ -21,9 +21,9 @@ public class TabeleActivity extends AppCompatActivity {
 
     ListView listView;
 
-    String[] kraje = {"Anglia","Francja","Niemcy"};
-    String[] ligi = {"Premier League","League 1","Bundesliga"};
-    int[] krajeFlagi = {R.mipmap.ic_anglia,R.mipmap.ic_francja,R.mipmap.ic_niemcy};
+    String[] kraje = {"Anglia","Francja","Hiszpania","Niemcy","Polska","Włochy"};
+    String[] ligi = {"Premier League","Ligue 1","LaLiga","Bundesliga","PKO BP Ekstraklasa","Serie A"};
+    int[] krajeFlagi = {R.mipmap.ic_anglia,R.mipmap.ic_francja,R.mipmap.ic_hiszpania,R.mipmap.ic_niemcy,R.mipmap.ic_polska,R.mipmap.ic_wlochy};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
