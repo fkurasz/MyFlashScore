@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/listviewtabela"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/pozycja"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="1."
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:paddingRight="10dp"
+            android:layout_marginStart="30dp"
+            android:textColor="#000000"
+            android:textSize="14sp"/>
+
+        <TextView
+            android:id="@+id/klub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/pozycja"
+            android:layout_centerVertical="true"
+            android:paddingStart="10dp"
+            android:paddingRight="80dp"
+            android:text="Manchester City"
+            android:textColor="#000000"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/mecz"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/klub"
+            android:layout_centerVertical="true"
+            android:text="38"
+            android:paddingRight="30dp"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            />
+        <TextView
+            android:id="@+id/bilans"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/mecz"
+            android:layout_centerVertical="true"
+            android:text="83:32"
+            android:paddingRight="30dp"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            />
+        <TextView
+            android:id="@+id/punkty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/bilans"
+            android:layout_centerVertical="true"
+            android:text="86"
+            android:paddingRight="30dp"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            />
+    </RelativeLayout>
+</RelativeLayout>

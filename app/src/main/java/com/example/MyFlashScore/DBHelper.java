@@ -28,6 +28,12 @@ public class DBHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("SELECT * FROM WszystkieDruzyny",null);
         return cursor;
     }
+    public Cursor getDataFromSQL(String sql_request)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(sql_request,null);
+        return cursor;
+    }
 
     //ustawia w tabeli mecz ulubione lub je usuwa
     public Boolean setUlubione(){
