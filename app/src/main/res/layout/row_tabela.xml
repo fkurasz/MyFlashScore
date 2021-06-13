@@ -8,64 +8,60 @@
     <RelativeLayout
         android:id="@+id/listviewtabela"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal">
 
         <TextView
             android:id="@+id/pozycja"
-            android:layout_width="wrap_content"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:text="1."
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:paddingRight="10dp"
             android:layout_marginStart="30dp"
+            android:paddingRight="10dp"
+            android:text="1."
             android:textColor="#000000"
-            android:textSize="14sp"/>
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/klub"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/pozycja"
             android:layout_centerVertical="true"
-            android:paddingStart="10dp"
-            android:paddingRight="80dp"
+            android:layout_toEndOf="@+id/pozycja"
             android:text="Manchester City"
             android:textColor="#000000"
             android:textSize="14sp" />
 
         <TextView
             android:id="@+id/mecz"
-            android:layout_width="wrap_content"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/klub"
             android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/klub"
             android:text="38"
-            android:paddingRight="30dp"
             android:textColor="#000000"
-            android:textSize="14sp"
-            />
+            android:textSize="14sp" />
+
         <TextView
             android:id="@+id/bilans"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/mecz"
             android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/mecz"
             android:text="83:32"
-            android:paddingRight="30dp"
             android:textColor="#000000"
-            android:textSize="14sp"
-            />
+            android:textSize="14sp" />
+
         <TextView
             android:id="@+id/punkty"
-            android:layout_width="wrap_content"
+            android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:layout_toEndOf="@+id/bilans"
             android:layout_centerVertical="true"
-            android:text="86"
+            android:layout_toEndOf="@+id/bilans"
             android:paddingRight="30dp"
+            android:text="86"
             android:textColor="#000000"
-            android:textSize="14sp"
-            />
+            android:textSize="14sp" />
     </RelativeLayout>
 </RelativeLayout>
