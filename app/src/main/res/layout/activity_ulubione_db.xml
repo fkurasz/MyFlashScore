@@ -61,15 +61,15 @@
                 android:paddingTop="10dp"
                 android:text="BRAK" />
 
-
-            <RatingBar
-                android:id="@+id/ratingBar"
+            <ImageButton
+                android:id="@+id/ulubBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:numStars="1"
-                android:progressTint="#FFD700"
-                android:rating="1"
-                android:stepSize="1" />
+                android:background="#ffffff"
+                app:tint="#FFD700"
+                tools:ignore="VectorDrawableCompat" />
+
+
         </LinearLayout>
 
     </LinearLayout>
@@ -82,4 +82,5 @@
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
         app:menu="@menu/menu_navigation"></com.google.android.material.bottomnavigation.BottomNavigationView>
+
 </RelativeLayout>

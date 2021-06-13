@@ -8,18 +8,22 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class UlubioneActivity extends AppCompatActivity {
 
     DBHelper db;
+    ImageButton btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-
+        // baza danych
         db = new DBHelper(this);
         Cursor res = db.getData();
         if(res.getCount()==0)
@@ -34,6 +38,16 @@ public class UlubioneActivity extends AppCompatActivity {
             }
             System.out.println(buffer);
         }
+        // end baza danych
+        btn = (ImageButton) findViewById(R.id.ulubBtn);
+        btn.setBackgroundResource(R.drawable.ic_ulubione_zlote);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //usunac mecz
+                btn.setBackgroundResource(R.drawable.ic_ulubione_puste);
+            }
+        });
 
         // bottom nav
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
