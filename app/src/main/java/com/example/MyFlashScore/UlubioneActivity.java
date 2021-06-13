@@ -1,9 +1,11 @@
 package com.example.MyFlashScore;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.MenuItem;
 
@@ -11,11 +13,27 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class UlubioneActivity extends AppCompatActivity {
 
+    DBHelper db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_ulubione);
 
+
+        db = new DBHelper(this);
+        Cursor res = db.getData();
+        if(res.getCount()==0)
+        {
+            setContentView(R.layout.activity_ulubione);
+        }
+        else {
+            setContentView(R.layout.activity_ulubione_db);
+            StringBuffer buffer = new StringBuffer();
+            while (res.moveToNext()){
+                buffer.append(res.getString(0)+" "+res.getString(1)+" "+res.getString(2)+"\n");
+            }
+            System.out.println(buffer);
+        }
 
         // bottom nav
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
