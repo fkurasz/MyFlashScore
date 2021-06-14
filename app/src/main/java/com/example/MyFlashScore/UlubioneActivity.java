@@ -32,6 +32,12 @@ public class UlubioneActivity extends AppCompatActivity {
     String [] data_tab = new String[100];
     String [] godzina_tab = new String[100];
 
+    int index2= 0;
+    String [] klub1_tab_ulub = new String[100];
+    String [] klub2_tab_ulub = new String[100];
+    String [] data_tab_ulub = new String[100];
+    String [] godzina_tab_ulub = new String[100];
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,35 +46,67 @@ public class UlubioneActivity extends AppCompatActivity {
 
         // baza danych
         db = new DBHelper(this);
-        Cursor res = db.getDataFromSQL("SELECT * FROM Mecze WHERE ulubione=1");
-        if(res.getCount()==0)
+        //wszystkie mecze
+        Cursor mecze = db.getDataFromSQL("SELECT * FROM Mecze");
+        if(mecze.getCount()==0)
         {
             setContentView(R.layout.activity_ulubione);
         }
         else {
-            setContentView(R.layout.activity_ulubione_db);
-            StringBuffer buffer = new StringBuffer();
-            while (res.moveToNext()){
-                klub1_tab[index] = res.getString(1);
-                klub2_tab[index] = res.getString(2);
-                data_tab[index] = res.getString(3);
-                godzina_tab[index] = res.getString(7);
+            //jesli sa mecze
+            while (mecze.moveToNext()){
+                klub1_tab[index] = mecze.getString(1);
+                klub2_tab[index] = mecze.getString(2);
+                data_tab[index] = mecze.getString(3);
+                godzina_tab[index] = mecze.getString(7);
                 index++;
             }
-            // wyslanie dalej
-            listView = findViewById(R.id.listviewulubione);
-            CustomAdapter customAdapter = new CustomAdapter();
-            listView.setAdapter(customAdapter);
 
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                    Intent intent = new Intent(getApplicationContext(),UlubioneMeczActivity.class);
-                        intent.putExtra("klub1", klub1_tab[position]);
-                        intent.putExtra("klub2", klub2_tab[position]);
-                        startActivity(intent);
+            Boolean jest = false;
+            for (int i = 0; i < index; i++)
+            {
+                //wszystkie ulubione zespoly
+                Cursor isulub1 = db.isUlubionaDruzyna(klub1_tab[i]);
+                Cursor isulub2 = db.isUlubionaDruzyna(klub2_tab[i]);
+
+                //jesli ktoras z druzyn jest w ulubionych to daj caly mecz jako ulubiony
+                if(isulub1.getCount() > 0 || isulub2.getCount() > 0)
+                {
+                    //ustaw mecz jako ulubiony dla id = i+1
+                    if(db.setUlubioneMecz(i+1))
+                    {
+                        jest = true;
+                        index2++;
+                    }
                 }
-            });
+            }
+            if(jest){
+                setContentView(R.layout.activity_ulubione_db);
+                // wyslanie dalej
+                for (int i = 0; i < index2; i++){
+                    klub1_tab_ulub[i] = klub1_tab[i];
+                    klub2_tab_ulub[i] = klub2_tab[i];
+                    data_tab_ulub[i] = data_tab[i];
+                    godzina_tab_ulub[i] = godzina_tab[i];
+                }
+
+                listView = findViewById(R.id.listviewulubione);
+                CustomAdapter customAdapter = new CustomAdapter();
+                listView.setAdapter(customAdapter);
+
+                listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Intent intent = new Intent(getApplicationContext(),UlubioneMeczActivity.class);
+                        intent.putExtra("klub1", klub1_tab_ulub[position]);
+                        intent.putExtra("klub2", klub2_tab_ulub[position]);
+                        startActivity(intent);
+                    }
+                });
+            }
+            else {
+                setContentView(R.layout.activity_ulubione);
+            }
 
         }
         // end baza danych
@@ -104,7 +142,7 @@ public class UlubioneActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return index;
+            return index2;
         }
 
         @Override
@@ -126,9 +164,9 @@ public class UlubioneActivity extends AppCompatActivity {
 
 
             // zapytanie o wszytkie kluby z bazy danych
-            klub.setText(klub1_tab[position]+"\n"+klub2_tab[position]);
-            godzina.setText(godzina_tab[position]);
-            data.setText(data_tab[position]);
+            klub.setText(klub1_tab_ulub[position]+"\n"+klub2_tab_ulub[position]);
+            godzina.setText(godzina_tab_ulub[position]);
+            data.setText(data_tab_ulub[position]);
 
 
 
