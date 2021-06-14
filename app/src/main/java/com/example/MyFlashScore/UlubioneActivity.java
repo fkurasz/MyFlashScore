@@ -26,18 +26,20 @@ public class UlubioneActivity extends AppCompatActivity {
     ImageButton btn;
     ListView listView;
 
+    //ilosc meczów
     int index = 0;
     String [] klub1_tab = new String[100];
     String [] klub2_tab = new String[100];
     String [] data_tab = new String[100];
     String [] godzina_tab = new String[100];
 
+    //index tablicy z id meczów ulubionych
     int index2= 0;
     String [] klub1_tab_ulub = new String[100];
     String [] klub2_tab_ulub = new String[100];
     String [] data_tab_ulub = new String[100];
     String [] godzina_tab_ulub = new String[100];
-
+    int [] index_meczu = new int[100];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +50,8 @@ public class UlubioneActivity extends AppCompatActivity {
         db = new DBHelper(this);
         //wszystkie mecze
         Cursor mecze = db.getDataFromSQL("SELECT * FROM Mecze");
+
+
         if(mecze.getCount()==0)
         {
             setContentView(R.layout.activity_ulubione);
@@ -61,6 +65,16 @@ public class UlubioneActivity extends AppCompatActivity {
                 godzina_tab[index] = mecze.getString(7);
                 index++;
             }
+            for (int i = 0; i < index; i++)
+            {
+                //usub wyszstkie z ulubionych
+                db.setUsunUlubioneMecz(i+1);
+            }
+            Cursor cur = db.getDataFromSQL("SELECT * FROM Mecze");
+            StringBuffer buff1 = new StringBuffer();
+            while (cur.moveToNext()){
+                buff1.append(cur.getInt(4));
+            }
 
             Boolean jest = false;
             for (int i = 0; i < index; i++)
@@ -70,12 +84,23 @@ public class UlubioneActivity extends AppCompatActivity {
                 Cursor isulub2 = db.isUlubionaDruzyna(klub2_tab[i]);
 
                 //jesli ktoras z druzyn jest w ulubionych to daj caly mecz jako ulubiony
-                if(isulub1.getCount() > 0 || isulub2.getCount() > 0)
+                //na miejscu i
+                if(isulub1.getCount() > 0)
                 {
                     //ustaw mecz jako ulubiony dla id = i+1
                     if(db.setUlubioneMecz(i+1))
                     {
                         jest = true;
+                        index_meczu[index2] = i;
+                        index2++;
+                    }
+                }
+                else if(isulub2.getCount() > 0){
+                    //ustaw mecz jako ulubiony dla id = i+1
+                    if(db.setUlubioneMecz(i+1))
+                    {
+                        jest = true;
+                        index_meczu[index2] = i;
                         index2++;
                     }
                 }
@@ -84,10 +109,10 @@ public class UlubioneActivity extends AppCompatActivity {
                 setContentView(R.layout.activity_ulubione_db);
                 // wyslanie dalej
                 for (int i = 0; i < index2; i++){
-                    klub1_tab_ulub[i] = klub1_tab[i];
-                    klub2_tab_ulub[i] = klub2_tab[i];
-                    data_tab_ulub[i] = data_tab[i];
-                    godzina_tab_ulub[i] = godzina_tab[i];
+                    klub1_tab_ulub[i] = klub1_tab[index_meczu[i]];
+                    klub2_tab_ulub[i] = klub2_tab[index_meczu[i]];
+                    data_tab_ulub[i] = data_tab[index_meczu[i]];
+                    godzina_tab_ulub[i] = godzina_tab[index_meczu[i]];
                 }
 
                 listView = findViewById(R.id.listviewulubione);

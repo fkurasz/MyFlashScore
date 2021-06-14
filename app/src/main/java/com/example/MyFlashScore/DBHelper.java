@@ -74,6 +74,7 @@ public class DBHelper extends SQLiteOpenHelper {
         }
         return false;
     }
+
     //ustawia w tabeli mecz ulubione lub je usuwa
     public Boolean setUlubioneMecz(int _id){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -90,7 +91,6 @@ public class DBHelper extends SQLiteOpenHelper {
                 buffer.append(cursor.getInt(4));
             }
             wynik = Integer.parseInt(buffer.toString());
-            // na 0
             if(wynik == 0)
             {
                 // na 1
@@ -102,5 +102,33 @@ public class DBHelper extends SQLiteOpenHelper {
             }
         }
         return false;
+    }
+
+    public Boolean setUsunUlubioneMecz(int _id){
+            SQLiteDatabase db = this.getWritableDatabase();
+            ContentValues contentValues = new ContentValues();
+
+            int wynik = 0;
+
+            String sql_request = "SELECT * FROM Mecze WHERE id=\"" + _id +"\"";
+
+            Cursor cursor = db.rawQuery(sql_request,null);
+            if(cursor.getCount()>0){
+                StringBuffer buffer = new StringBuffer();
+                while (cursor.moveToNext()){
+                    buffer.append(cursor.getInt(4));
+                }
+                wynik = Integer.parseInt(buffer.toString());
+                if(wynik == 1)
+                {
+                    // na 0
+                    contentValues.put("ulubione",0);
+                    int result = db.update("Mecze",contentValues,"id=\"" + _id +"\"",null);
+                    return true;
+                }else {
+                    return true;
+                }
+            }
+            return false;
     }
 }
