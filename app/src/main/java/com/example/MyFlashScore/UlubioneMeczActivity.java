@@ -15,8 +15,6 @@ public class UlubioneMeczActivity extends AppCompatActivity {
 
     TextView klub1;
     TextView klub2;
-    ImageButton ulubBtn1;
-    ImageButton ulubBtn2;
 
 
     @Override
@@ -28,8 +26,6 @@ public class UlubioneMeczActivity extends AppCompatActivity {
 
         klub1 = findViewById(R.id.klub1);
         klub2 = findViewById(R.id.klub2);
-        ulubBtn1 = findViewById(R.id.ulubBtn1);
-        ulubBtn2 = findViewById(R.id.ulubBtn2);
 
         Intent intent = getIntent();
 

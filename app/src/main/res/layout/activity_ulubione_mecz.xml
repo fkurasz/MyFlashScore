@@ -37,28 +37,6 @@
                 android:textStyle="bold" />
         </TableRow>
 
-        <TableRow
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
-            android:gravity="center">
-
-            <ImageButton
-                android:id="@+id/ulubBtn1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="50dp"
-                android:background="#ffffff"
-                android:src="@drawable/ic_ulubione_zlote"/>
-
-            <ImageButton
-                android:id="@+id/ulubBtn2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="50dp"
-                android:background="#ffffff"
-                android:src="@drawable/ic_ulubione_zlote"/>
-        </TableRow>
 
 
     </TableLayout>
