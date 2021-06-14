@@ -59,6 +59,24 @@ public class TabeleWyborActivity extends AppCompatActivity {
                 punkty_tab[i] = res.getInt(6);
                 i++;
             }
+            // wyslanie dalej
+            listView = findViewById(R.id.listviewtabela);
+            CustomAdapter customAdapter = new CustomAdapter();
+            listView.setAdapter(customAdapter);
+
+            // end ustawienie naglowka
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    Intent intent1 = new Intent(getApplicationContext(),KlubActivity.class);
+                    intent1.putExtra("nazwaklubu",kluby_tab[position]);
+                    intent1.putExtra("nazwaligi",liga.getText().toString());
+                    intent1.putExtra("meczerozegrane",String.valueOf(mecze_tab[position]));
+                    intent1.putExtra("bilansbramkowy",bilans_tab[position]);
+                    intent1.putExtra("punktyzdobyte",String.valueOf(punkty_tab[position]));
+                    startActivity(intent1);
+                }
+            });
         }
         else {
             setContentView(R.layout.activity_tabele_wybor_brak);
@@ -71,26 +89,6 @@ public class TabeleWyborActivity extends AppCompatActivity {
         }
         // end baza danych
 
-        // end ustawienie naglowka
-
-
-        // wyslanie dalej
-        listView = findViewById(R.id.listviewtabela);
-        CustomAdapter customAdapter = new CustomAdapter();
-        listView.setAdapter(customAdapter);
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent1 = new Intent(getApplicationContext(),KlubActivity.class);
-                intent1.putExtra("nazwaklubu",kluby_tab[position]);
-                intent1.putExtra("nazwaligi",liga.getText().toString());
-                intent1.putExtra("meczerozegrane",String.valueOf(mecze_tab[position]));
-                intent1.putExtra("bilansbramkowy",bilans_tab[position]);
-                intent1.putExtra("punktyzdobyte",String.valueOf(punkty_tab[position]));
-                startActivity(intent1);
-            }
-        });
 
         // bottom nav
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
