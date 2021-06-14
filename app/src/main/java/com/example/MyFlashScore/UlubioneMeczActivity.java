@@ -41,7 +41,7 @@ public class UlubioneMeczActivity extends AppCompatActivity {
 
         // bottom nav
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.tabele);
+        bottomNavigationView.setSelectedItemId(R.id.ulubione);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

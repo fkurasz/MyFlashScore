@@ -122,11 +122,13 @@ public class UlubioneActivity extends AppCompatActivity {
             View view1 = getLayoutInflater().inflate(R.layout.row_ulubione,null);
             TextView klub = view1.findViewById(R.id.klub);
             TextView godzina = view1.findViewById(R.id.godzina);
+            TextView data = view1.findViewById(R.id.data);
 
 
             // zapytanie o wszytkie kluby z bazy danych
             klub.setText(klub1_tab[position]+"\n"+klub2_tab[position]);
             godzina.setText(godzina_tab[position]);
+            data.setText(data_tab[position]);
 
 
 
