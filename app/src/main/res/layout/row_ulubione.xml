@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/listviewtabela"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal">
+
+        <ImageButton
+            android:id="@+id/ulubBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:paddingLeft="10dp"
+            android:paddingRight="20dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:background="#ffffff"
+            android:src="@drawable/ic_ulubione_zlote"
+            android:layout_marginBottom="50dp"/>
+        <TextView
+            android:id="@+id/klub"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/ulubBtn"
+            android:text="Manchester City\nChelsea"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="30dp"/>
+
+        <TextView
+            android:id="@+id/godzina"
+            android:layout_width="60dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/klub"
+            android:text="18:00"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp" />
+
+
+    </RelativeLayout>
+
+</RelativeLayout>
