@@ -36,23 +36,32 @@ public class DBHelper extends SQLiteOpenHelper {
     }
 
     //ustawia w tabeli mecz ulubione lub je usuwa
-    public Boolean setUlubione(){
+    public Boolean setUlubioneWszystkieDruzyny(String _klub){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
 
-        Cursor cursor = db.rawQuery("SELECT * FROM Mecze",null);
+        int wynik = 0;
+
+        String sql_request = "SELECT * FROM WszystkieDruzyny WHERE klub=\"" + _klub +"\"";
+
+        Cursor cursor = db.rawQuery(sql_request,null);
         if(cursor.getCount()>0){
-            if(cursor.getInt(4)==1)
-            {
+            StringBuffer buffer = new StringBuffer();
+            while (cursor.moveToNext()){
+                buffer.append(cursor.getInt(7));
+            }
+            wynik = Integer.parseInt(buffer.toString());
                 // na 0
+            if(wynik == 1)
+            {
                 contentValues.put("ulubione",0);
-                long result = db.update("Mecze",contentValues,null,null);
+                int result = db.update("WszystkieDruzyny",contentValues,"klub=\"" + _klub +"\"",null);
                 return true;
             }
             else{
                 // na 1
                 contentValues.put("ulubione",1);
-                long result = db.update("Mecze",contentValues,null,null);
+                int result = db.update("WszystkieDruzyny",contentValues,"klub=\"" + _klub +"\"",null);
                 return true;
             }
         }
