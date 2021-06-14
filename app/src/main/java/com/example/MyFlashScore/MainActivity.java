@@ -7,12 +7,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.MyFlashScore.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
+
+    ListView listView;
 
     String[] kraje = {"Anglia","Francja","Hiszpania","Niemcy","Polska","Włochy"};
     String[] ligi = {"Premier League","Ligue 1","LaLiga","Bundesliga","PKO BP Ekstraklasa","Serie A"};
@@ -22,15 +30,23 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        this.setTitle("MECZE");
+        listView = findViewById(R.id.listview);
 
-        // obsluga przycisku
-        //button = (Button)findViewById(R.id.button);
-        //button.setOnClickListener(new View.OnClickListener() {
-        //    @Override
-        //    public void onClick(View v) {
-        //        openTabeleActivity();
-        //    }
-        //});
+        CustomAdapter customAdapter = new CustomAdapter();
+
+        listView.setAdapter(customAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getApplicationContext(),MeczeLigaActivity.class);
+                intent.putExtra("name",kraje[position]);
+                intent.putExtra("liga",ligi[position]);
+                intent.putExtra("image",krajeFlagi[position]);
+                startActivity(intent);
+            }
+        });
 
         // bottom nav
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
@@ -59,10 +75,36 @@ public class MainActivity extends AppCompatActivity {
         //end bottom nav
 
     }
-    //public void openTabeleActivity(){
-    //    Intent intent = new Intent(this,TabeleActivity.class);
-    //    startActivity(intent);
-    //}
+    private class CustomAdapter extends BaseAdapter {
+
+        @Override
+        public int getCount() {
+            return krajeFlagi.length;
+        }
+
+        @Override
+        public Object getItem(int position) {
+            return null;
+        }
+
+        @Override
+        public long getItemId(int position) {
+            return 0;
+        }
+
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            View view1 = getLayoutInflater().inflate(R.layout.row_mecze,null);
+            TextView name = view1.findViewById(R.id.country);
+            TextView name2 = view1.findViewById(R.id.league);
+            ImageView image = view1.findViewById(R.id.images);
+
+            name.setText(kraje[position]);
+            name2.setText(ligi[position]);
+            image.setImageResource(krajeFlagi[position]);
 
 
+            return view1;
+        }
+    }
 }

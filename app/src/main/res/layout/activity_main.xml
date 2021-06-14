@@ -6,6 +6,11 @@
     android:layout_height="match_parent"
     tools:context="com.example.MyFlashScore.MainActivity">
 
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,12 +22,6 @@
 
 
     </com.google.android.material.bottomnavigation.BottomNavigationView>
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Mecze_main" />
 
 
 </RelativeLayout>

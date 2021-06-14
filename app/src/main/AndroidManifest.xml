@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Clickable_temp">
-        <activity android:name=".UlubioneMeczActivity"></activity>
+        <activity android:name=".MeczeLigaActivity"></activity>
+        <activity android:name=".UlubioneMeczActivity" />
         <activity android:name=".KlubActivity" />
         <activity android:name=".UlubioneActivity" />
         <activity android:name=".TabeleWyborActivity" />
