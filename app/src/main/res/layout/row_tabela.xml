@@ -21,7 +21,9 @@
             android:paddingRight="10dp"
             android:text="1."
             android:textColor="#000000"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"/>
 
         <TextView
             android:id="@+id/klub"
@@ -31,7 +33,9 @@
             android:layout_toEndOf="@+id/pozycja"
             android:text="Manchester City"
             android:textColor="#000000"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp" />
 
         <TextView
             android:id="@+id/mecz"
@@ -41,7 +45,9 @@
             android:layout_toEndOf="@+id/klub"
             android:text="38"
             android:textColor="#000000"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp" />
 
         <TextView
             android:id="@+id/bilans"
@@ -51,7 +57,9 @@
             android:layout_toEndOf="@+id/mecz"
             android:text="83:32"
             android:textColor="#000000"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp" />
 
         <TextView
             android:id="@+id/punkty"
@@ -62,6 +70,8 @@
             android:paddingRight="30dp"
             android:text="86"
             android:textColor="#000000"
-            android:textSize="14sp" />
+            android:textSize="14sp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp" />
     </RelativeLayout>
 </RelativeLayout>

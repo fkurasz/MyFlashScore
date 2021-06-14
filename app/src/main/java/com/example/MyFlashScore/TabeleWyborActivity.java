@@ -34,17 +34,7 @@ public class TabeleWyborActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_tabele_wybor);
-        // z poprzedniego activity
         Intent intent = getIntent();
-        // ustawienie naglowka
-        name = findViewById(R.id.listKraj);
-        liga = findViewById(R.id.listLiga);
-        image = findViewById(R.id.listImage);
-        name.setText(intent.getStringExtra("name"));
-        liga.setText(intent.getStringExtra("liga"));
-        image.setImageResource(intent.getIntExtra("image",0));
-
         // baza danych
         DBHelper db = new DBHelper(this);
         // daj tylko kluby angielskie w "name"
@@ -52,6 +42,14 @@ public class TabeleWyborActivity extends AppCompatActivity {
         if(res.getCount()>0)
         {
             setContentView(R.layout.activity_tabele_wybor);
+            // ustawienie naglowka
+            name = findViewById(R.id.listKraj);
+            liga = findViewById(R.id.listLiga);
+            image = findViewById(R.id.listImage);
+            name.setText(intent.getStringExtra("name"));
+            liga.setText(intent.getStringExtra("liga"));
+            image.setImageResource(intent.getIntExtra("image",0));
+
             StringBuffer buffer = new StringBuffer();
             int i = 0;
             while (res.moveToNext()){
@@ -64,6 +62,12 @@ public class TabeleWyborActivity extends AppCompatActivity {
         }
         else {
             setContentView(R.layout.activity_tabele_wybor_brak);
+            name = findViewById(R.id.listKraj);
+            liga = findViewById(R.id.listLiga);
+            image = findViewById(R.id.listImage);
+            name.setText(intent.getStringExtra("name"));
+            liga.setText(intent.getStringExtra("liga"));
+            image.setImageResource(intent.getIntExtra("image",0));
         }
         // end baza danych
 
@@ -79,11 +83,11 @@ public class TabeleWyborActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent1 = new Intent(getApplicationContext(),KlubActivity.class);
-                intent.putExtra("nazwaklubu",kluby_tab[position]);
-                intent.putExtra("nazwaligi",kluby_tab[position]);
-                intent.putExtra("meczerozegrane",kluby_tab[position]);
-                intent.putExtra("bilansbramkowy",kluby_tab[position]);
-                intent.putExtra("punktyzdobyte",kluby_tab[position]);
+                intent1.putExtra("nazwaklubu",kluby_tab[position]);
+                intent1.putExtra("nazwaligi",liga.getText().toString());
+                intent1.putExtra("meczerozegrane",String.valueOf(mecze_tab[position]));
+                intent1.putExtra("bilansbramkowy",bilans_tab[position]);
+                intent1.putExtra("punktyzdobyte",String.valueOf(punkty_tab[position]));
                 startActivity(intent1);
             }
         });
