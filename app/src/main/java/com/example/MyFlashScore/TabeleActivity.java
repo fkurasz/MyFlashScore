@@ -27,6 +27,7 @@ public class TabeleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.setTitle("TABELE");
         setContentView(R.layout.activity_tabele);
 
         listView = findViewById(R.id.listview);

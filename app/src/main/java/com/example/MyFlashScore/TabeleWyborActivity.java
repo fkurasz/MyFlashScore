@@ -34,6 +34,7 @@ public class TabeleWyborActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.setTitle("TABELE");
         Intent intent = getIntent();
         // baza danych
         DBHelper db = new DBHelper(this);

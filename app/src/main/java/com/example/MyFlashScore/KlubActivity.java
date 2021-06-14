@@ -21,6 +21,7 @@ public class KlubActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.setTitle("TABELE");
         setContentView(R.layout.activity_klub);
         Intent intent = getIntent();
 
