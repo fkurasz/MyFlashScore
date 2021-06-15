@@ -38,13 +38,6 @@ public class MeczeLigaActivity extends AppCompatActivity {
         Intent intent = getIntent();
         this.setTitle("MECZE");
 
-        // ustawienie naglowka
-        name = findViewById(R.id.listKraj);
-        liga = findViewById(R.id.listLiga);
-        image = findViewById(R.id.listImage);
-        name.setText(intent.getStringExtra("name"));
-        liga.setText(intent.getStringExtra("liga"));
-        image.setImageResource(intent.getIntExtra("image",0));
 
         //pokaz te mecze ktore sa z ligii angielskiej a jak nie to brak meczy xml
         // baza danych
@@ -56,9 +49,23 @@ public class MeczeLigaActivity extends AppCompatActivity {
         if(mecze.getCount()==0)
         {
             setContentView(R.layout.activity_tabele_wybor_brak);
+            // ustawienie naglowka
+            name = findViewById(R.id.listKraj);
+            liga = findViewById(R.id.listLiga);
+            image = findViewById(R.id.listImage);
+            name.setText(intent.getStringExtra("name"));
+            liga.setText(intent.getStringExtra("liga"));
+            image.setImageResource(intent.getIntExtra("image",0));
         }
         else {
             setContentView(R.layout.activity_mecze_liga);
+            // ustawienie naglowka
+            name = findViewById(R.id.listKraj);
+            liga = findViewById(R.id.listLiga);
+            image = findViewById(R.id.listImage);
+            name.setText(intent.getStringExtra("name"));
+            liga.setText(intent.getStringExtra("liga"));
+            image.setImageResource(intent.getIntExtra("image",0));
             //jesli sa mecze
             while (mecze.moveToNext()){
                 klub1_tab[index] = mecze.getString(1);
