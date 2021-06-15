@@ -23,7 +23,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class UlubioneActivity extends AppCompatActivity {
 
     DBHelper db;
-    ImageButton btn;
     ListView listView;
 
     //ilosc meczów
